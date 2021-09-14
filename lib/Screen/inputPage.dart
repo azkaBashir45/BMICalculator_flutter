@@ -4,7 +4,7 @@ import 'Container.dart';
 import 'iconText.dart';
 
 const Color activeColor = Color(0xFF1D1E33);
-const Color deactiveColor = Color(0xFF111328);
+const Color deactiveColor = Color(0xFFd1cbff);
 enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
@@ -15,6 +15,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color maleColor = deactiveColor;
   Color femaleColor = deactiveColor;
+  Gender selectGender;
 //without enum
   // void updatetheColor(int gender) {
   //   if (gender == 1) {
@@ -25,14 +26,14 @@ class _InputPageState extends State<InputPage> {
   //   }
   // }
 //with enum integer ki form m yd rkna muskil hojata h hm text ki form m yd rky gy
-  void updatetheColor(Gender genderType) {
-    if (genderType == Gender.male) {
-      maleColor = activeColor;
-    }
-    if (genderType == Gender.female) {
-      maleColor = activeColor;
-    }
-  }
+  // void updatetheColor(Gender genderType) {
+  //   if (genderType == Gender.male) {
+  //     maleColor = activeColor;
+  //   }
+  //   if (genderType == Gender.female) {
+  //     maleColor = activeColor;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +50,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updatetheColor(Gender.male);
+                        selectGender = Gender.male;
                       });
                     },
                     child: RepeateContainer(
-                      colors: maleColor,
+                      colors: selectGender == Gender.male
+                          ? activeColor
+                          : deactiveColor,
                       cardWidjet: RepeatTextIcon(
                         iconData: FontAwesomeIcons.male,
                         label: 'Male',
@@ -65,11 +68,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updatetheColor(Gender.female);
+                        selectGender = Gender.female;
                       });
                     },
                     child: RepeateContainer(
-                      colors: femaleColor,
+                      colors: selectGender == Gender.female
+                          ? activeColor
+                          : deactiveColor,
                       cardWidjet: RepeatTextIcon(
                           iconData: FontAwesomeIcons.female, label: 'Female'),
                     ),
