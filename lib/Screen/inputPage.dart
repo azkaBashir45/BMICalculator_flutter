@@ -47,37 +47,33 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: RepeateContainer(
+                    onPress: () {
                       setState(() {
                         selectGender = Gender.male;
                       });
                     },
-                    child: RepeateContainer(
-                      colors: selectGender == Gender.male
-                          ? activeColor
-                          : deactiveColor,
-                      cardWidjet: RepeatTextIcon(
-                        iconData: FontAwesomeIcons.male,
-                        label: 'Male',
-                      ),
+                    colors: selectGender == Gender.male
+                        ? activeColor
+                        : deactiveColor,
+                    cardWidjet: RepeatTextIcon(
+                      iconData: FontAwesomeIcons.male,
+                      label: 'Male',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: RepeateContainer(
+                    onPress: () {
                       setState(() {
                         selectGender = Gender.female;
                       });
                     },
-                    child: RepeateContainer(
-                      colors: selectGender == Gender.female
-                          ? activeColor
-                          : deactiveColor,
-                      cardWidjet: RepeatTextIcon(
-                          iconData: FontAwesomeIcons.female, label: 'Female'),
-                    ),
+                    colors: selectGender == Gender.female
+                        ? activeColor
+                        : deactiveColor,
+                    cardWidjet: RepeatTextIcon(
+                        iconData: FontAwesomeIcons.female, label: 'Female'),
                   ),
                 ),
               ],
